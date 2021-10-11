@@ -19,8 +19,18 @@ class OrderController extends Controller
      */
     private $orderService;
 
+    /**
+     * User business-logic service.
+     *
+     * @var UserService
+     */
     private $userService;
 
+    /**
+     * Tariff business-logic service.
+     *
+     * @var TariffService
+     */
     private $tariffService;
 
     /**
