@@ -13,6 +13,7 @@ class TariffTransformer implements ITransformer
     public function transform(Model $model): array
     {
         return [
+            Tariff::ID => $model->id,
             Tariff::NAME => $model->name,
             Tariff::PRICE => $model->price,
             'available_days' => $model->getAvailableDays(),
