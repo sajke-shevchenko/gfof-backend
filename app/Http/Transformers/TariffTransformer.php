@@ -16,7 +16,7 @@ class TariffTransformer implements ITransformer
             Tariff::ID => $model->id,
             Tariff::NAME => $model->name,
             Tariff::PRICE => $model->price,
-            'available_days' => $model->getAvailableDays(),
+            'delivery_days' => $model->getDeliveryDays(),
         ];
     }
 }

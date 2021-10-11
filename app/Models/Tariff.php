@@ -18,17 +18,17 @@ class Tariff extends Model
     public const ID = 'id';
     public const NAME = 'name';
     public const PRICE = 'price';
-    public const AVAILABLE_DAYS = 'available_days';
 
     /**
-     * Returns available days to delivery.
+     * Returns days to delivery.
      *
      * @return array
      */
-    public function getAvailableDays(): array
+    public function getDeliveryDays(): array
     {
-        return Arr::where($this->toArray(), function ($value, $key) {
+        $deliveryDays = Arr::where($this->toArray(), function ($value, $key) {
             return in_array($key, WeekDays::getConstants()) && $value == 1;
         });
+        return array_keys($deliveryDays);
     }
 }

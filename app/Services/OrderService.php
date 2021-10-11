@@ -39,12 +39,12 @@ class OrderService
     public function create(OrderData $orderData, User $user, Tariff $tariff): Order
     {
         $deliveryDayName = strtolower(Carbon::create($orderData->delivery_date)->shortDayName);
-        $tariffAvailableDays = array_keys($tariff->getAvailableDays());
+        $tariffDeliveryDays = $tariff->getDeliveryDays();
 
-        if (!in_array($deliveryDayName, $tariffAvailableDays)) {
+        if (!in_array($deliveryDayName, $tariffDeliveryDays)) {
             throw new ServiceException(
                 "The $tariff->name tariff can delivery only in following days: "
-                .implode(",", $tariffAvailableDays)
+                .implode(",", $tariffDeliveryDays)
             );
         }
         $order = new Order($orderData->toArray());
